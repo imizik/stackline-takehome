@@ -9,12 +9,20 @@ export default function Chart(props) {
         const month = date.slice(5,7)
         return months[month]
     }
+
+    const productData = [...product.sales].sort((a,b) => {
+        const aComps = a.weekEnding.split("-");
+        const bComps = b.weekEnding.split("-");
+        const aDate = new Date(aComps[0], aComps[1], aComps[2]);
+        const bDate = new Date(bComps[0], bComps[1], bComps[2]);
+        return  aDate.getTime() - bDate.getTime();
+      })
     
     return (
       <div className="chart-container">
         <span className='chart-title'>Retail Sales</span>
         <ResponsiveContainer width="100%" height='90%'>
-            <LineChart data={product.sales} margin={ { bottom: 20, right: 5} }>
+            <LineChart data={productData} margin={ { bottom: 20, right: 5} }>
                 <XAxis 
                 dataKey='weekEnding'
                 tickFormatter={monthConvert}

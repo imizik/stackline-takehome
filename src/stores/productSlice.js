@@ -21,7 +21,36 @@ export const fetchData = createAsyncThunk('product/fetchData', async () => {
 export const productSlice = createSlice({
     name: 'product',
     initialState,
-    reducers: {},
+    reducers: {
+      sort: (state, action) => {
+        const key = action.payload;
+        const changeTo = state.sorters[key] === 'up' ? 'down' : 'up'
+
+        for (let item in state.sorters) {
+          if (state.sorters[item] === changeTo) {
+            const reverse = changeTo === 'up' ? 'down' : 'up'
+            state.sorters[item] = reverse
+          }
+        }
+        state.sorters[key] = changeTo
+
+        if (key === 'weekEnding') {
+          state.data[0].sales.sort((a,b) => {
+            const aComps = a.weekEnding.split("-");
+            const bComps = b.weekEnding.split("-");
+            const aDate = new Date(aComps[0], aComps[1], aComps[2]);
+            const bDate = new Date(bComps[0], bComps[1], bComps[2]);
+            return state.sorters[key] === 'up' ? aDate.getTime() - bDate.getTime() : bDate.getTime() - aDate.getTime()
+          })
+        } else {
+          state.data[0].sales.sort((a,b) => {
+            const aComps = Number(a[key])
+            const bComps = Number(b[key])
+            return state.sorters[key] === 'up' ? aComps-bComps : bComps-aComps
+          })
+        }
+      }
+    },
     extraReducers(builder) {
       builder
         .addCase(fetchData.pending, (state, action) => {
@@ -37,6 +66,8 @@ export const productSlice = createSlice({
         })
     }
   })
+
+export const { sort } = productSlice.actions;
 
   export const selectProduct = (state) => {
     const products = state.product.data;

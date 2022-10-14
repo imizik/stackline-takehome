@@ -12,7 +12,6 @@ function App() {
 
   const productStatus = useSelector((state) => state.product.status);
   const product = useSelector((state) => state.product.posts);
-  console.log(product);
 
   useEffect(() => {
     if (productStatus === 'idle') {
