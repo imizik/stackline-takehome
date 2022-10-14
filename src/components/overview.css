@@ -51,3 +51,11 @@
     border: 0.5px solid #c4cbd6;
     padding: 1% 5% 1% 5%;
 }
+
+.right-contain {
+    display: flex;
+    flex-direction: column;
+    width: 77%;
+    margin-left: 1%;
+
+}

@@ -5,6 +5,7 @@ import './App.css';
 import { fetchData } from './stores/productSlice.js';
 import Overview from './components/overview';
 import Table from './components/table';
+import Chart from './components/chart';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,7 +28,10 @@ function App() {
       {productStatus === 'succeeded' && (
         <div className="Main">
           <Overview />
-          <Table />
+          <div className='right-contain'>
+            <Chart />
+            <Table />
+          </div>
         </div>
       )}
     </div>

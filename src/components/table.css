@@ -1,15 +1,13 @@
 .table-container {
-    width: 77%;
-    margin-left: 1%;
     background-color: white;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    overflow-y: scroll;
-    height: 50vh;
+    height: auto;
 }
 
 th {
     font-weight: 500;
     padding: 19px 0px 19px 0px;
+    color: #786981;
 }
 
 table {
@@ -25,5 +23,5 @@ tr {
 td { 
     padding-top:10px;
     padding-bottom:10px;
-    color: gray;
+    color: #AFBED1;
 }
