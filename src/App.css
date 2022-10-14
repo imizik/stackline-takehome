@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-  width: 100vw;
+  background-color: #F6F8Fa;
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -16,6 +17,13 @@
   justify-content: center;
   background-color: #052849;
   height: 8vmin;
+  margin-bottom: 3%;
+
+}
+
+.Main {
+  display: flex;
+  
 
 }
 

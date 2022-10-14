@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 import { fetchData } from './stores/productSlice.js';
 import Overview from './components/overview';
+import Table from './components/table';
+
 function App() {
   const dispatch = useDispatch();
 
@@ -22,9 +24,12 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="Stackline" />
       </header>
-      {productStatus === 'succeeded' && <div className="Main">
-        <Overview />
-        </div>}
+      {productStatus === 'succeeded' && (
+        <div className="Main">
+          <Overview />
+          <Table />
+        </div>
+      )}
     </div>
   );
 }
